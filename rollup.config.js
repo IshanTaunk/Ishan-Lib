@@ -30,13 +30,13 @@
           commonjs(),
           typescript({ tsconfig: "./tsconfig.json" }),
           terser(),
-          postcss(),
+          postcss({extract:true,minimize:true}),
         ],
         external: ["react", "react-dom"],
       },
       {
         input: "src/index.ts",
-        output: [{ file: packageJson.types }],
+        output: [{ file: packageJson.types, format:'es'}],
         plugins: [dts.default()],
         external: [/\.css$/]
       },
