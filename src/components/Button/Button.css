@@ -1,1 +1,5 @@
-.button{padding: 0.5rem 1rem}
+/* src/components/Button/button.css */
+.button { padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; }
+.solid  { background: #0b6efd; color: #fff; border: none; }
+.outline{ background: transparent; color: #0b6efd; border: 1px solid #0b6efd; }
+.ghost  { background: transparent; color: #0b6efd; border: none; }
