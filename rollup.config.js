@@ -30,7 +30,7 @@
           commonjs(),
           typescript({ tsconfig: "./tsconfig.json" }),
           terser(),
-          postcss({extract:true,minimize:true}),
+          postcss({inject:true,minimize:true}),
         ],
         external: ["react", "react-dom"],
       },
