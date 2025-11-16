@@ -141,7 +141,3 @@ npm run rollup
 ## 🧾 License
 
 This project is licensed under the [ISC License](./LICENSE).
-
----
-
-Would you like me to extend this README with a **preview section** (like screenshots or storybook link placeholders)?
