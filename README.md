@@ -1,6 +1,10 @@
+Sure! Here’s a concise but professional **README.md** that documents both your **Button** and **Modal** components in your npm library 👇
+
+---
+
 # 🧱 ishan-ui-library
 
-A lightweight, reusable React UI library featuring a customizable **Button** component with built-in size and variant options.
+A lightweight React UI library featuring simple, reusable **Button** and **Modal** components.
 
 ---
 
@@ -18,19 +22,26 @@ yarn add ishan-ui-library
 
 ## 🧩 Usage
 
-Import the component and its CSS in your React app:
+Import the components and their styles in your React project:
 
 ```tsx
-import React from 'react';
-import { Button } from 'ishan-ui-library';
+import React, { useState } from 'react';
+import { Button, Modal } from 'ishan-ui-library';
 import 'ishan-ui-library/dist/index.css';
 
 export default function App() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div style={{ display: 'flex', gap: '1rem' }}>
-      <Button variant="solid" size="md">Solid</Button>
-      <Button variant="outline" size="md">Outline</Button>
-      <Button variant="ghost" size="md">Ghost</Button>
+    <div style={{ padding: '1rem' }}>
+      <Button variant="solid" size="md" onClick={() => setOpen(true)}>
+        Open Modal
+      </Button>
+
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <h2>Hello 👋</h2>
+        <p>This is a simple modal.</p>
+      </Modal>
     </div>
   );
 }
@@ -38,106 +49,75 @@ export default function App() {
 
 ---
 
-## 🎨 Button Props
+## 🎨 Components
 
-| Prop        | Type                                | Default     | Description                                               |
-| ----------- | ----------------------------------- | ----------- | --------------------------------------------------------- |
-| `variant`   | `'solid'` | `'outline'` | `'ghost'` | `'solid'`   | Defines the visual style of the button.                   |
-| `size`      | `'sm'` | `'md'` | `'lg'`            | `'md'`      | Adjusts padding and font size.                            |
-| `fullWidth` | `boolean`                           | `false`     | Expands the button to take the full container width.      |
-| `loading`   | `boolean`                           | `false`     | Displays a spinner and disables the button while loading. |
-| `leftIcon`  | `ReactNode`                         | `undefined` | Renders an icon before the text.                          |
-| `rightIcon` | `ReactNode`                         | `undefined` | Renders an icon after the text.                           |
-| `disabled`  | `boolean`                           | `false`     | Disables button interaction.                              |
-| `onClick`   | `(event) => void`                   | `undefined` | Click handler.                                            |
-| `className` | `string`                            | `undefined` | Adds custom class names.                                  |
+### 🔘 Button
 
----
+A customizable button with **size** and **variant** options.
 
-## 🧠 Examples
+#### Props
 
-### 🔘 Variants
+| Prop        | Type                              | Default   | Description               |
+| ----------- | --------------------------------- | --------- | ------------------------- |
+| `variant`   | `'solid' \| 'outline' \| 'ghost'` | `'solid'` | Defines the button style. |
+| `size`      | `'sm' \| 'md' \| 'lg'`            | `'md'`    | Sets the button size.     |
+| `onClick`   | `() => void`                      | –         | Handles button click.     |
+| `className` | `string`                          | –         | Adds custom class names.  |
+| `children`  | `React.ReactNode`                 | –         | Button content.           |
+
+#### Example
 
 ```tsx
-<Button variant="solid">Solid</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="ghost">Ghost</Button>
-```
-
-### 📏 Sizes
-
-```tsx
-<Button size="sm">Small</Button>
-<Button size="md">Medium</Button>
-<Button size="lg">Large</Button>
-```
-
-### ⏳ Loading State
-
-```tsx
-<Button loading>Loading...</Button>
-```
-
-### 🧱 Full Width
-
-```tsx
-<Button fullWidth>Full Width Button</Button>
-```
-
-### ⭐ Icons
-
-```tsx
-<Button leftIcon={<span>⭐</span>}>Star</Button>
-<Button rightIcon={<span>→</span>}>Next</Button>
+<Button variant="solid" size="sm">Small Solid</Button>
+<Button variant="outline" size="md">Medium Outline</Button>
+<Button variant="ghost" size="lg">Large Ghost</Button>
 ```
 
 ---
 
-## 🧩 Theming
+### 🪟 Modal
 
-You can override colors using CSS variables in your app’s stylesheet:
+A minimal, accessible modal component rendered via a React portal.
 
-```css
-:root {
-  --btn-bg: #2e7d32; /* solid background */
-  --btn-bd: #2e7d32; /* border color */
-  --btn-fg: #fff;    /* text color */
-}
+#### Props
+
+| Prop       | Type              | Required | Description                                           |
+| ---------- | ----------------- | -------- | ----------------------------------------------------- |
+| `open`     | `boolean`         | ✅        | Controls visibility of the modal.                     |
+| `onClose`  | `() => void`      | ✅        | Called when the modal or overlay is clicked to close. |
+| `children` | `React.ReactNode` | ✅        | Modal content.                                        |
+
+#### Example
+
+```tsx
+const [open, setOpen] = useState(false);
+
+<Button onClick={() => setOpen(true)}>Open Modal</Button>
+<Modal open={open} onClose={() => setOpen(false)}>
+  <h2>Modal Title</h2>
+  <p>This is a minimal modal component.</p>
+</Modal>
 ```
 
 ---
 
-## 🛠 Development Setup
+## 🛠 Development
 
 ```bash
 # install dependencies
 npm install
 
-# build the library
+# start Storybook for development
+npm run storybook
+
+# build library
 npm run build
-
-# run Rollup build manually
-npm run rollup
 ```
-
----
-
-## 📦 Publishing
-
-1. Update the version in `package.json`.
-2. Build the package:
-
-   ```bash
-   npm run build
-   ```
-3. Publish to npm:
-
-   ```bash
-   npm publish --access public
-   ```
 
 ---
 
 ## 🧾 License
 
-This project is licensed under the [ISC License](./LICENSE).
+Licensed under the [ISC License](./LICENSE).
+
+---
