@@ -1,7 +1,3 @@
-Sure! Here’s a concise but professional **README.md** that documents both your **Button** and **Modal** components in your npm library 👇
-
----
-
 # 🧱 ishan-ui-library
 
 A lightweight React UI library featuring simple, reusable **Button** and **Modal** components.
